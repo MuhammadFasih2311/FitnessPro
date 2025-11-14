@@ -1,15 +1,25 @@
-# FitnessPro
+# FitnessPro 🏋️‍♂️
 
-A modern responsive fitness website showcasing services, trainers, and programs. Built with **HTML, CSS, Bootstrap 5, and JavaScript**.  
+A modern responsive fitness website showcasing services, trainers, and programs.
 
-## Features
+## 🌐 Live Demo
+[https://fitnesspro.gt.tc](https://fitnesspro.gt.tc)
+
+## ✨ Features
 - Home, About, Services, Trainers, Contact pages
 - Animated scroll effects using AOS
 - Responsive design for mobile and desktop
-- Contact form integrated with email (Formspree)
 
-## Tech Stack
-- HTML, CSS, Bootstrap 5, JavaScript, AOS
+## ⚙️ Tech Stack
+- HTML
+- CSS
+- Bootstrap 5
+- JavaScript
+- AOS Library
 
-## Notes
-- Contact form uses Formspree.
+## 🛡️ Notes
+- Fully static frontend; no database required.
+
+---
+
+👨‍💻 Developed by [Muhammad Fasih](https://fasihwebs.wuaze.com)
