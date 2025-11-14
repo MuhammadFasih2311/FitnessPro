@@ -1,0 +1,106 @@
+<!-- navbar.php -->
+<nav class="navbar navbar-expand-lg fixed-top py-3 custom-navbar">
+  <div class="container">
+    <!-- Brand / Logo -->
+    <a class="navbar-brand fw-bold fs-3" href="#home" data-aos="fade-down">
+      <span><img src="img/logo1.png" alt="Logo" width="55" class="me-2">Well</span><span class="brand-highlight">Ness</span>
+    </a>
+
+    <!-- Toggle Button -->
+    <button class="navbar-toggler custom-toggler border-0 shadow-none" type="button"
+      data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" data-aos="fade-down" data-aos-delay="100">
+      <span class="toggler-icon top-bar"></span>
+      <span class="toggler-icon middle-bar"></span>
+      <span class="toggler-icon bottom-bar"></span>
+    </button>
+
+    <!-- Nav Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item" data-aos="fade-down" data-aos-delay="100"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item" data-aos="fade-down" data-aos-delay="200"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item" data-aos="fade-down" data-aos-delay="300"><a class="nav-link" href="#programs">Programs</a></li>
+
+        <!-- For mobile -->
+        <li class="nav-item d-lg-none"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+        <li class="nav-item d-lg-none"><a class="nav-link" href="#team">Trainers</a></li>
+        <li class="nav-item d-lg-none"><a class="nav-link" href="#stats">Stats</a></li>
+        <li class="nav-item d-lg-none"><a class="nav-link" href="#plan">Plans</a></li>
+
+        <li class="nav-item" data-aos="fade-down" data-aos-delay="400"><a class="nav-link" href="#contact">Contact</a></li>
+
+        <!-- Dropdown (only on large screens) -->
+        <li class="nav-item dropdown d-none d-lg-block" data-aos="fade-down" data-aos-delay="500">
+          <a class="nav-link dropdown-toggle more-link" href="#" id="navbarDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            More <i class="bi bi-chevron-down ms-1"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#testimonials">Testimonials</a></li>
+            <li><a class="dropdown-item" href="#team">Trainers</a></li>
+            <li><a class="dropdown-item" href="#stats">Stats</a></li>
+            <li><a class="dropdown-item" href="#plan">Plans</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item ms-lg-3" data-aos="fade-down" data-aos-delay="600">
+          <a href="#contact" class="btn btn-join rounded-pill px-3">Join Now</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll(".nav-link");
+  const dropdownItems = document.querySelectorAll(".dropdown-item");
+  const moreLink = document.querySelector(".more-link");
+  const sections = document.querySelectorAll("section[id]");
+  const moreSections = ["testimonials", "team", "stats", "plan"];
+
+  function clearActive() {
+    navLinks.forEach(l => l.classList.remove("active"));
+    dropdownItems.forEach(i => i.classList.remove("active"));
+    moreLink?.classList.remove("active");
+  }
+
+  function setActiveById(id) {
+    clearActive();
+
+    if (moreSections.includes(id)) {
+      moreLink?.classList.add("active");
+      document.querySelector(`.dropdown-item[href="#${id}"]`)?.classList.add("active");
+    } else {
+      document.querySelector(`.nav-link[href="#${id}"]`)?.classList.add("active");
+    }
+  }
+
+  // ✅ Scroll detection
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(sec => {
+      const secTop = sec.offsetTop - 180;
+      const secHeight = sec.offsetHeight;
+      if (window.scrollY >= secTop && window.scrollY < secTop + secHeight) {
+        current = sec.id;
+      }
+    });
+    if (current) setActiveById(current);
+  });
+
+  // ✅ Click event (main + dropdown)
+  [...navLinks, ...dropdownItems].forEach(link => {
+    link.addEventListener("click", e => {
+      const id = link.getAttribute("href").replace("#", "");
+      setActiveById(id);
+    });
+  });
+
+  // ✅ Dropdown focus fix (no blue background)
+  document.querySelectorAll('.dropdown-item').forEach(item => {
+    item.addEventListener('mousedown', e => e.preventDefault());
+  });
+});
+</script>
+
